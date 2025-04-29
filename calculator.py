@@ -29,7 +29,7 @@ def devl() :
     t.geometry("190x350") #الآلة الحاسبة تكون علمية
 def bat() : #الآلة الحاسبة تكون بسيطة
     t.geometry("190x190")
-
+# btns
 amalia = Label(t,textvariable=rt,font=("arial",15),width="16",bd=0,height="1",bg="lightblue",fg="white").place(x=5,y=7)
 kisma = Button(t,text="/",command=lambda :n("/"),bg="orange",height="1",width="3").place(x=5,y=35)
 tharb = Button(t,text="*",command=lambda :n("*"),bg="orange",height="1",width="3").place(x=40,y=35)
@@ -71,6 +71,7 @@ b17 = Button(t,text="sinh",command=lambda :n("sinh("),bg="white",height="1",widt
 b18 = Button(t,text="asinh",command=lambda :n("asinh("),bg="white",height="1",width="5").place(x=140,y=285)
 b19 = Button(t,text="acosh",command=lambda :n("acosh("),bg="white",height="1",width="5").place(x=140,y=315)
 b20 = Button(t,text="cosh",command=lambda :n("cosh("),bg="white",height="1",width="5").place(x=140,y=255)
+# from simple to scientifique
 my_menu = Menu(t)
 t.configure(menu=my_menu)
 file_menu = Menu(my_menu)
@@ -78,49 +79,15 @@ my_menu.add_cascade(label="نوع الآلة الحاسبة",menu=file_menu)
 file_menu.add_command(label="الآلة الحاسبة العلمية",command=devl)
 file_menu.add_separator()
 file_menu.add_command(label="الآلة الحاسبة العادية",command=bat)
-
 def key(event) :
-   if event.char == "0" :
-       n("0")
-   if event.char == "1":
-       n("1")
-   if event.char == "2":
-       n("2")
-   if event.char == "3":
-       n("3")
-   if event.char == "4":
-       n("4")
-   if event.char == "5":
-       n("5")
-   if event.char == "6":
-       n("6")
-   if event.char == "7":
-       n("7")
-   if event.char == "8":
-       n("8")
-   if event.char == "9":
-       n("9")
-   if event.char == "(":
-       n("(")
-   if event.char == ")":
-       n(")")
-   if event.char == ".":
-       n(".")
-   if event.char == "\r":
-       r()
-   if event.char == "-":
-       n("-")
-   if event.char == "+":
-       n("+")
-   if event.char == "/":
-       n("/")
-   if event.char == "*":
-       n("*")
-   if event.char == "\x08":
-       ed()
-   if event.char == "c":
-       c()
-
+    char = event.char
+    if char in ['0','1','2','3','4','5','6','7','8','9','(',')','.','-','+','/','*'] :
+       n(char)   
+    elif char == "\r":
+        r()
+    elif char == "\x08":
+        ed()
+    elif char == "c":
+        c()
 t.bind("<Key>", key)
-
 t.mainloop()
